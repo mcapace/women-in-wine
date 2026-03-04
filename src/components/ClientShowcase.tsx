@@ -5,38 +5,32 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { clients } from "@/data/clients";
 import type { ClientSocial } from "@/data/clients";
+import { SocialIcons } from "@/components/SocialIcons";
+import type { SocialLink } from "@/components/SocialIcons";
 import { fadeInUp, staggerContainer, defaultTransition, quickTransition } from "@/lib/motion";
 
 function imageSrc(filename: string) {
   return `/images/${encodeURIComponent(filename)}`;
 }
 
-function SocialLinks({ social }: { social: ClientSocial }) {
-  const links = [
-    { key: "website", href: social.website, label: "Website" },
-    { key: "instagram", href: social.instagram, label: "Instagram" },
-    { key: "facebook", href: social.facebook, label: "Facebook" },
-    { key: "youtube", href: social.youtube, label: "YouTube" },
-    { key: "linkedin", href: social.linkedin, label: "LinkedIn" },
-  ].filter((item) => item.href);
+function partnerSocialLinks(social: ClientSocial): SocialLink[] {
+  const out: SocialLink[] = [];
+  if (social.website) out.push({ type: "website", href: social.website, label: "Website" });
+  if (social.instagram) out.push({ type: "instagram", href: social.instagram, label: "Instagram" });
+  if (social.facebook) out.push({ type: "facebook", href: social.facebook, label: "Facebook" });
+  if (social.youtube) out.push({ type: "youtube", href: social.youtube, label: "YouTube" });
+  if (social.linkedin) out.push({ type: "linkedin", href: social.linkedin, label: "LinkedIn" });
+  return out;
+}
 
+function SocialLinks({ social }: { social: ClientSocial }) {
+  const links = partnerSocialLinks(social);
   if (links.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-3 mt-4 pt-4 border-t border-cream-dark/50">
-      <span className="text-xs uppercase tracking-wider text-slate mr-1">Follow</span>
-      {links.map(({ key, href, label }) => (
-        <a
-          key={key}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-burgundy hover:text-burgundy-light underline underline-offset-2 transition-colors duration-300"
-          aria-label={label}
-        >
-          {label}
-        </a>
-      ))}
+    <div className="mt-4 pt-4 border-t border-cream-dark/50">
+      <span className="text-xs uppercase tracking-wider text-slate block mb-2">Follow</span>
+      <SocialIcons links={links} variant="light" />
     </div>
   );
 }

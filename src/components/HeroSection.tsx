@@ -8,7 +8,7 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative min-h-[85vh] flex flex-col justify-center pt-36 pb-16 px-5 overflow-hidden"
+      className="relative min-h-[85vh] flex flex-col justify-center pt-52 pb-16 px-5 overflow-hidden"
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0">

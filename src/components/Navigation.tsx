@@ -1,8 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { SocialIcons, WINE_SPECTATOR_SOCIAL } from "@/components/SocialIcons";
+
+const WS_LOGO = `/images/${encodeURIComponent("WS logo (6).png")}`;
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
@@ -16,7 +20,7 @@ export function Navigation() {
 
   return (
     <motion.header
-      className="fixed top-11 left-0 right-0 z-40 border-b border-cream-dark/50"
+      className="fixed top-[7.5rem] left-0 right-0 z-40 border-b border-cream-dark/50"
       initial={false}
       animate={{
         backgroundColor: scrolled ? "rgba(247, 243, 240, 0.98)" : "rgba(247, 243, 240, 0.92)",
@@ -26,10 +30,19 @@ export function Navigation() {
     >
       <nav className="container-wide flex items-center justify-between h-16 lg:h-20" aria-label="Main">
         <Link
-          href="#main-content"
-          className="font-display text-xl lg:text-2xl text-charcoal hover:text-burgundy transition-colors duration-300"
+          href="https://www.winespectator.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative h-7 w-36 lg:h-8 lg:w-40 flex-shrink-0"
+          aria-label="Wine Spectator – Home"
         >
-          Women in Wine
+          <Image
+            src={WS_LOGO}
+            alt="Wine Spectator"
+            fill
+            className="object-contain object-left"
+            sizes="160px"
+          />
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <Link
@@ -44,6 +57,7 @@ export function Navigation() {
           >
             Featured Partners
           </Link>
+          <SocialIcons links={WINE_SPECTATOR_SOCIAL} variant="light" className="ml-2 border-l border-cream-dark/60 pl-6" />
         </div>
         <button
           type="button"
