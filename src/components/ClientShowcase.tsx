@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { clients } from "@/data/clients";
 import type { ClientSocial } from "@/data/clients";
+import { fadeInUp, staggerContainer, defaultTransition, quickTransition } from "@/lib/motion";
 
 function imageSrc(filename: string) {
   return `/images/${encodeURIComponent(filename)}`;
@@ -8,11 +13,11 @@ function imageSrc(filename: string) {
 
 function SocialLinks({ social }: { social: ClientSocial }) {
   const links = [
-    { key: "website", href: social.website, label: "Website", icon: "↗" },
-    { key: "instagram", href: social.instagram, label: "Instagram", icon: "IG" },
-    { key: "facebook", href: social.facebook, label: "Facebook", icon: "FB" },
-    { key: "youtube", href: social.youtube, label: "YouTube", icon: "YT" },
-    { key: "linkedin", href: social.linkedin, label: "LinkedIn", icon: "in" },
+    { key: "website", href: social.website, label: "Website" },
+    { key: "instagram", href: social.instagram, label: "Instagram" },
+    { key: "facebook", href: social.facebook, label: "Facebook" },
+    { key: "youtube", href: social.youtube, label: "YouTube" },
+    { key: "linkedin", href: social.linkedin, label: "LinkedIn" },
   ].filter((item) => item.href);
 
   if (links.length === 0) return null;
@@ -26,7 +31,7 @@ function SocialLinks({ social }: { social: ClientSocial }) {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-burgundy hover:text-burgundy-light underline underline-offset-2"
+          className="text-sm font-medium text-burgundy hover:text-burgundy-light underline underline-offset-2 transition-colors duration-300"
           aria-label={label}
         >
           {label}
@@ -37,49 +42,68 @@ function SocialLinks({ social }: { social: ClientSocial }) {
 }
 
 export function ClientShowcase() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
   return (
-    <section
+    <motion.section
+      ref={ref}
       id="partners"
       className="py-16 lg:py-24 bg-cream"
       aria-labelledby="partners-heading"
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={staggerContainer}
     >
       <div className="container-wide">
-        <h2 id="partners-heading" className="font-display text-3xl sm:text-4xl text-charcoal mb-4 text-center">
+        <motion.h2
+          id="partners-heading"
+          variants={fadeInUp}
+          transition={defaultTransition}
+          className="font-display text-3xl sm:text-4xl text-charcoal mb-4 text-center tracking-tight"
+        >
           Featured Partners
-        </h2>
-        <p className="text-slate text-center max-w-xl mx-auto mb-12">
+        </motion.h2>
+        <motion.p
+          variants={fadeInUp}
+          transition={defaultTransition}
+          className="text-slate text-center max-w-xl mx-auto mb-12"
+        >
           Meet the women in key roles at the heart of our program—and the wineries they lead.
-        </p>
+        </motion.p>
         <div className="grid gap-12 lg:gap-16">
           {clients.map((client) => (
-            <article
+            <motion.article
               key={client.id}
-              className="bg-white rounded-lg shadow-sm border border-cream-dark/50 overflow-hidden"
+              variants={fadeInUp}
+              transition={defaultTransition}
+              whileHover={{ y: -4, transition: quickTransition }}
+              className="bg-white rounded-lg shadow-sm border border-cream-dark/50 overflow-hidden transition-shadow duration-300 hover:shadow-lg"
             >
               {client.image && (
-                <div className="relative w-full aspect-[16/10] bg-cream-dark/30">
+                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] bg-cream-dark/30">
                   <Image
                     src={imageSrc(client.image)}
                     alt=""
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 1024px"
+                    className="object-contain"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 512px"
                   />
                 </div>
               )}
               <div className="p-8 lg:p-12">
                 {client.logo && (
-                  <div className="relative h-10 w-48 mb-6">
+                  <div className="relative h-12 w-52 mb-6">
                     <Image
                       src={imageSrc(client.logo)}
                       alt=""
                       fill
                       className="object-contain object-left"
-                      sizes="192px"
+                      sizes="208px"
                     />
                   </div>
                 )}
-                <h3 className="font-display text-2xl sm:text-3xl text-charcoal mb-2">
+                <h3 className="font-display text-2xl sm:text-3xl text-charcoal mb-2 tracking-tight">
                   {client.name}
                 </h3>
                 <p className="font-accent text-lg text-gold-dark mb-4">{client.tagline}</p>
@@ -107,10 +131,11 @@ export function ClientShowcase() {
                       href={client.ctaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center font-medium text-burgundy hover:text-burgundy-light transition-colors"
+                      className="inline-flex items-center font-medium text-burgundy hover:text-burgundy-light transition-colors duration-300 group"
+                      aria-label={client.ctaText}
                     >
                       {client.ctaText}
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
@@ -118,10 +143,10 @@ export function ClientShowcase() {
                 </div>
                 {client.social && <SocialLinks social={client.social} />}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
