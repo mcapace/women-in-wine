@@ -72,20 +72,20 @@ export function ClientShowcase() {
             variants={fadeInUp}
             transition={defaultTransition}
             whileHover={{ y: -4, transition: quickTransition }}
-            className="bg-white transition-shadow duration-300 hover:shadow-lg"
+            className="bg-white rounded-lg shadow-sm border border-cream-dark/50 overflow-hidden transition-shadow duration-300 hover:shadow-lg"
           >
             {client.image && (
-              <div className="relative aspect-[4/5] sm:aspect-[3/4] bg-cream-dark/30 full-bleed">
+              <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] bg-cream-dark/30">
                 <Image
                   src={imageSrc(client.image)}
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="100vw"
+                  sizes="(max-width: 1024px) 100vw, 1152px"
                 />
               </div>
             )}
-            <div className="container-wide p-6 sm:p-8 lg:p-10">
+            <div className="p-6 sm:p-8 lg:p-10">
                 {client.logo && (
                   <div className="relative h-12 w-52 mb-6">
                     <Image
