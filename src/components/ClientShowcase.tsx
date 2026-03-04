@@ -65,7 +65,7 @@ export function ClientShowcase() {
         >
           Meet the women in key roles at the heart of our program—and the wineries they lead.
         </motion.p>
-        <div className="grid gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {clients.map((client) => (
           <motion.article
             key={client.id}
@@ -75,13 +75,13 @@ export function ClientShowcase() {
             className="bg-white rounded-lg shadow-sm border border-cream-dark/50 overflow-hidden transition-shadow duration-300 hover:shadow-lg"
           >
             {client.image && (
-              <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] bg-cream-dark/30">
+              <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] bg-cream-dark/30">
                 <Image
                   src={imageSrc(client.image)}
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 1152px"
+                  sizes="(max-width: 1024px) 100vw, 576px"
                 />
               </div>
             )}
