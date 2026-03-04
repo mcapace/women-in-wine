@@ -12,7 +12,7 @@ export function AboutSection() {
     <motion.section
       ref={ref}
       id="about"
-      className="py-16 lg:py-24 bg-white"
+      className="py-10 lg:py-16 bg-white"
       aria-labelledby="about-heading"
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -23,7 +23,7 @@ export function AboutSection() {
           id="about-heading"
           variants={fadeInUp}
           transition={defaultTransition}
-          className="font-display text-3xl sm:text-4xl text-charcoal mb-8 tracking-tight"
+          className="font-display text-3xl sm:text-4xl text-charcoal mb-6 tracking-tight"
         >
           About the Program
         </motion.h2>

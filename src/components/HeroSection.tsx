@@ -27,7 +27,7 @@ export function HeroSection() {
             sizes="100vw"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-charcoal/50 grain" aria-hidden />
+        <div className="absolute inset-0 bg-charcoal/65 grain" aria-hidden />
       </div>
       <motion.div
         className="container-narrow text-center relative z-10"
@@ -38,7 +38,7 @@ export function HeroSection() {
         <motion.p
           variants={fadeInUp}
           transition={defaultTransition}
-          className="font-accent text-gold-light uppercase tracking-[0.25em] text-sm mb-4"
+          className="font-accent text-gold-light uppercase tracking-[0.25em] text-sm mb-4 [text-shadow:0_1px_3px_rgba(0,0,0,0.8),0_2px_8px_rgba(0,0,0,0.5)]"
         >
           Wine Spectator Program
         </motion.p>
@@ -46,14 +46,14 @@ export function HeroSection() {
           id="hero-heading"
           variants={fadeInUp}
           transition={defaultTransition}
-          className="font-display text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight drop-shadow-sm tracking-tight"
+          className="font-display text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.8),0_4px_12px_rgba(0,0,0,0.6)]"
         >
           Women in Wine
         </motion.h1>
         <motion.p
           variants={fadeInUp}
           transition={{ ...defaultTransition, delay: 0.15 }}
-          className="font-accent text-xl sm:text-2xl text-cream max-w-2xl mx-auto leading-relaxed drop-shadow-sm"
+          className="font-accent text-xl sm:text-2xl text-white max-w-2xl mx-auto leading-relaxed [text-shadow:0_1px_3px_rgba(0,0,0,0.8),0_2px_8px_rgba(0,0,0,0.5)]"
         >
           Women who influence the wine world—from vineyard to cellar to table. Celebrating the leaders and visionaries shaping what comes next.
         </motion.p>

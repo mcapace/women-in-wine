@@ -42,12 +42,12 @@ export interface SocialLink {
   label: string;
 }
 
-/** Wine Spectator social links – update hrefs as needed */
+/** Wine Spectator social links – from winespectator.com footer (Follow Us) */
 export const WINE_SPECTATOR_SOCIAL: SocialLink[] = [
-  { type: "instagram", href: "https://www.instagram.com/winespectator/", label: "Instagram" },
-  { type: "facebook", href: "https://www.facebook.com/winespectator", label: "Facebook" },
-  { type: "twitter", href: "https://twitter.com/winespectator", label: "X (Twitter)" },
-  { type: "youtube", href: "https://www.youtube.com/winespectator", label: "YouTube" },
+  { type: "instagram", href: "https://www.instagram.com/wine_spectator/", label: "Instagram" },
+  { type: "facebook", href: "https://www.facebook.com/WineSpectator", label: "Facebook" },
+  { type: "twitter", href: "https://x.com/WineSpectator?lang=en", label: "X (Twitter)" },
+  { type: "youtube", href: "https://www.youtube.com/winespectatorvideo", label: "YouTube" },
 ];
 
 interface SocialIconsProps {

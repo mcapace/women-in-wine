@@ -43,7 +43,7 @@ export function ClientShowcase() {
     <motion.section
       ref={ref}
       id="partners"
-      className="py-16 lg:py-24 bg-cream"
+      className="py-10 lg:py-16 bg-cream"
       aria-labelledby="partners-heading"
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -54,38 +54,38 @@ export function ClientShowcase() {
           id="partners-heading"
           variants={fadeInUp}
           transition={defaultTransition}
-          className="font-display text-3xl sm:text-4xl text-charcoal mb-4 text-center tracking-tight"
+          className="font-display text-3xl sm:text-4xl text-charcoal mb-3 text-center tracking-tight"
         >
           Featured Partners
         </motion.h2>
         <motion.p
           variants={fadeInUp}
           transition={defaultTransition}
-          className="text-slate text-center max-w-xl mx-auto mb-12"
+          className="text-slate text-center max-w-xl mx-auto mb-8"
         >
           Meet the women in key roles at the heart of our program—and the wineries they lead.
         </motion.p>
-        <div className="grid gap-12 lg:gap-16">
+        <div className="grid gap-8 lg:gap-10">
           {clients.map((client) => (
-            <motion.article
-              key={client.id}
-              variants={fadeInUp}
-              transition={defaultTransition}
-              whileHover={{ y: -4, transition: quickTransition }}
-              className="bg-white rounded-lg shadow-sm border border-cream-dark/50 overflow-hidden transition-shadow duration-300 hover:shadow-lg"
-            >
-              {client.image && (
-                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] bg-cream-dark/30">
-                  <Image
-                    src={imageSrc(client.image)}
-                    alt=""
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 512px"
-                  />
-                </div>
-              )}
-              <div className="p-8 lg:p-12">
+          <motion.article
+            key={client.id}
+            variants={fadeInUp}
+            transition={defaultTransition}
+            whileHover={{ y: -4, transition: quickTransition }}
+            className="bg-white transition-shadow duration-300 hover:shadow-lg"
+          >
+            {client.image && (
+              <div className="relative aspect-[4/5] sm:aspect-[3/4] bg-cream-dark/30 full-bleed">
+                <Image
+                  src={imageSrc(client.image)}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
+              </div>
+            )}
+            <div className="container-wide p-6 sm:p-8 lg:p-10">
                 {client.logo && (
                   <div className="relative h-12 w-52 mb-6">
                     <Image
