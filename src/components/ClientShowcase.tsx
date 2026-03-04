@@ -1,5 +1,10 @@
+import Image from "next/image";
 import { clients } from "@/data/clients";
 import type { ClientSocial } from "@/data/clients";
+
+function imageSrc(filename: string) {
+  return `/images/${encodeURIComponent(filename)}`;
+}
 
 function SocialLinks({ social }: { social: ClientSocial }) {
   const links = [
@@ -51,7 +56,29 @@ export function ClientShowcase() {
               key={client.id}
               className="bg-white rounded-lg shadow-sm border border-cream-dark/50 overflow-hidden"
             >
+              {client.image && (
+                <div className="relative w-full aspect-[16/10] bg-cream-dark/30">
+                  <Image
+                    src={imageSrc(client.image)}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                  />
+                </div>
+              )}
               <div className="p-8 lg:p-12">
+                {client.logo && (
+                  <div className="relative h-10 w-48 mb-6">
+                    <Image
+                      src={imageSrc(client.logo)}
+                      alt=""
+                      fill
+                      className="object-contain object-left"
+                      sizes="192px"
+                    />
+                  </div>
+                )}
                 <h3 className="font-display text-2xl sm:text-3xl text-charcoal mb-2">
                   {client.name}
                 </h3>

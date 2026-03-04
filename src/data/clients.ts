@@ -16,6 +16,10 @@ export interface Client {
   ctaText?: string;
   ctaUrl?: string;
   social?: ClientSocial;
+  /** Filename in public/images (e.g. "Oneill_Logo_hor_RGB_lrg.png") */
+  logo?: string;
+  /** Filename in public/images for hero/feature image */
+  image?: string;
 }
 
 export const clients: Client[] = [
@@ -39,6 +43,8 @@ export const clients: Client[] = [
       facebook: "https://www.facebook.com/clinefamilycellars",
       youtube: "https://www.youtube.com/@ClineCellarswine",
     },
+    logo: "Cline Full Logo - Color-01 (2).png",
+    image: "Cline Women in Wine 1.jpg",
   },
   {
     id: "oneill",
@@ -60,5 +66,7 @@ export const clients: Client[] = [
       facebook: "https://www.facebook.com/oneillwines",
       linkedin: "https://www.linkedin.com/company/oneillvintnersanddistillers",
     },
+    logo: "Oneill_Logo_hor_RGB_lrg.png",
+    image: "O'Neill Headshots-8 (1).jpg",
   },
 ];
