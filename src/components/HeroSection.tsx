@@ -13,7 +13,7 @@ export function HeroSection() {
           Women in Wine
         </h1>
         <p className="font-accent text-xl sm:text-2xl text-slate max-w-2xl mx-auto leading-relaxed">
-          Celebrating the women shaping the future of wine—from vineyard to cellar to table.
+          Women who influence the wine world—from vineyard to cellar to table. Celebrating the leaders and visionaries shaping what comes next.
         </p>
       </div>
     </section>

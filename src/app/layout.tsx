@@ -24,11 +24,11 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Women in Wine | Wine Spectator",
   description:
-    "Celebrating the women shaping the future of wine—from vineyard to cellar to table.",
+    "Women who influence the wine world. Celebrating the leaders and visionaries shaping wine—from vineyard to cellar to table.",
   openGraph: {
     title: "Women in Wine | Wine Spectator",
     description:
-      "Celebrating the women shaping the future of wine—from vineyard to cellar to table.",
+      "Women who influence the wine world. Celebrating the leaders and visionaries shaping wine—from vineyard to cellar to table.",
   },
 };
 
