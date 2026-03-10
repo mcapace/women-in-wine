@@ -14,7 +14,7 @@ module.exports = {
         "rich-black": "#1A1815",
         gold: "#C9A961",
         "gold-light": "#E4D4A8",
-        "gold-dark": "#9C7F3E",
+        "gold-dark": "#5D4A36",
         burgundy: "#6B2737",
         "burgundy-light": "#8B3547",
         slate: "#6B6560",
