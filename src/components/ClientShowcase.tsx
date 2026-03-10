@@ -107,18 +107,6 @@ export function ClientShowcase() {
                 <p className="text-slate leading-relaxed mb-6 whitespace-pre-line">
                   {client.description}
                 </p>
-                {client.highlights && client.highlights.length > 0 && (
-                  <ul className="flex flex-wrap gap-2 mb-6">
-                    {client.highlights.map((item) => (
-                      <li
-                        key={item}
-                        className="px-3 py-1 bg-cream rounded-full text-sm text-charcoal"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
                 <div className="flex flex-wrap items-center gap-6">
                   {client.ctaUrl && client.ctaText && (
                     <a
